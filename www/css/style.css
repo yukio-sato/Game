@@ -1,2 +1,7 @@
-/**/
+#block {
+  position: relative;
+  width: 25vw;
+  height: 25vh;
+  transition: left 3s;
+}
 
