@@ -1,7 +1,9 @@
-#block {
-  position: relative;
-  width: 25vw;
-  height: 25vh;
-  transition: left 3s;
+#body{
+background: linear-gradient(100deg,rgb(182, 237, 255),rgb(193, 255, 255) 50%,rgb(182, 237, 255));
 }
-
+#btn{
+background: linear-gradient(100deg,lime,rgb(0, 233, 0),lime);
+color: red;
+width: 50%;
+height: 50px;
+}
