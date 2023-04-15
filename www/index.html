@@ -13,7 +13,25 @@
     <title>Jogo</title>
 </head>
 <body id="body">
-<h1 id="nub">Menção: NA</h1>
-<button id="btn" onclick="teste()">Não Clique!</button>
+<h1 id="scoreLabel">Clicks: 0</h1>
+<center>
+<button id="btn" onclick="teste()">Manual</button>
+</center>
+
+<div class="UPG">
+    <button id="1" onclick="buy(1,10)">10 Clicks.</button>
+    <label>+1 Click</label>
+</div>
+
+<div class="UPG">
+    <button id="2" onclick="buy(2,30)">30 Clicks.</button>
+    <label>-0,5 Cooldown.</label>
+</div>
+
+<div class="UPG">
+    <button id="3" onclick="buy(3,100)">100 Clicks.</button>
+    <label>+2 Click and +1,5 Cooldown</label>
+</div>
+
 </body>
 </html>
