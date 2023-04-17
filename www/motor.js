@@ -1,16 +1,18 @@
 var point = 0;
 var debounce = false;
+var repeatdebounce = false;
 var upg1=false;
 var upg2=false;
 var upg3=false;
-
+var gameplay = "Manual";
+var cd = 1000;
 function Update()
 {
     document.getElementById("scoreLabel").textContent = "Clicks: "+ point.toString();
 }
-function teste()
+function generate()
 {
-    var cd = 1000;
+    cd = 1000;
     if (debounce == false)
     {
     debounce = true;
@@ -25,7 +27,7 @@ function teste()
     if (upg3 == true)
     {
         point = point + 2;
-        cd = cd + 1500;
+        cd = cd + 750;
     }
     point++;
     Update()
@@ -38,10 +40,31 @@ function teste()
     setTimeout (() => {
     clearInterval(timer)
     debounce = false;
-    document.getElementById("btn").textContent = "Manual";
+    document.getElementById("btn").textContent = gameplay;
     }, cd)
     }
 }
+function generator()
+{
+    if (repeatdebounce == false)
+    {
+    repeatdebounce = true;
+    let repeating = setInterval (() => {
+        if (gameplay == "Manual" && gameplay != "Auto")
+        {
+            clearInterval(repeating);
+            setTimeout (() => {
+                repeatdebounce = false;
+            },cd-100)
+        }
+        if (debounce == false)
+        {        
+            generate();
+        }
+    },cd)
+    }
+}
+
 var msg = "Purchaded!";
 function buy(x, cost)
 {
@@ -75,5 +98,35 @@ function buy(x, cost)
         document.getElementById(x).textContent = msg;
         Update()
         }
+    }
+}
+
+function config()
+{
+    var enabled = document.getElementById("Shop").getAttribute("hidden")
+    if (enabled)
+    {
+        document.getElementById("Shop").removeAttribute("hidden")
+        document.getElementById("Configuration").setAttribute("hidden","hidden")
+    }
+    else
+    {
+        document.getElementById("Shop").setAttribute("hidden","hidden")
+        document.getElementById("Configuration").removeAttribute("hidden")
+    }
+}
+
+function languageChange(x)
+{
+        document.documentElement.setAttribute("lang",x)
+        document.getElementById("selectedLang").textContent = "Language: "+ document.documentElement.lang
+}
+function modeChange(x)
+{
+    gameplay = x
+    document.getElementById("selectedMode").textContent = "Gameplay: "+x
+    if (debounce == false)
+    {
+    document.getElementById("btn").textContent = x;
     }
 }

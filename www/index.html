@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -14,24 +14,46 @@
 </head>
 <body id="body">
 <h1 id="scoreLabel">Clicks: 0</h1>
+<img id="PNG" src="https://cdn-icons-png.flaticon.com/32/40/40031.png" alt="Configuration" onclick="config()">
 <center>
-<button id="btn" onclick="teste()">Manual</button>
+<button id="btn" onclick="generator()">Manual</button>
 </center>
 
-<div class="UPG">
-    <button id="1" onclick="buy(1,10)">10 Clicks.</button>
-    <label>+1 Click</label>
-</div>
+<div id="Shop">
+    <div class="UPG">
+      <button id="1" onclick="buy(1,10)">10 Clicks.</button>
+      <label>+1 Click</label>
+    </div>
 
-<div class="UPG">
-    <button id="2" onclick="buy(2,30)">30 Clicks.</button>
-    <label>-0,5 Cooldown.</label>
-</div>
+    <div class="UPG"> 
+        <button id="2" onclick="buy(2,30)">30 Clicks.</button>
+        <label>-0,5 Cooldown.</label>
+    </div>
 
-<div class="UPG">
-    <button id="3" onclick="buy(3,100)">100 Clicks.</button>
-    <label>+2 Click and +1,5 Cooldown</label>
+    <div class="UPG">
+       <button id="3" onclick="buy(3,100)">100 Clicks.</button>
+       <label>+2 Click and +0,75 Cooldown</label>
+    </div>
 </div>
-
+<div id="Configuration" hidden>
+    <h1 id="selectedLang">Language: en</h1>
+    <div class="Language">
+        <button class="Language" onclick="languageChange('pt-br')">pt-br</button>
+        <br>
+        <br>
+        <button class="Language" onclick="languageChange('en')">en</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 id="selectedMode">Gameplay: Manual</h1>
+    <div class="Mode">
+        <button class="Mode" onclick="modeChange('Manual')">Manual</button>
+        <br>
+        <br>
+        <button class="Mode" onclick="modeChange('Auto')">Auto</button>
+    </div>
+</div>
 </body>
 </html>
