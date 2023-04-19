@@ -4,11 +4,21 @@ var repeatdebounce = false;
 var upg1=false;
 var upg2=false;
 var upg3=false;
+var upg4=false;
+var upg5=false;
 var gameplay = "Manual";
 var cd = 1000;
 function Update()
 {
     document.getElementById("scoreLabel").textContent = "Clicks: "+ point.toString();
+}
+function UpgradeFunction(name,pointUp,cdUP)
+{
+    if (name == true)
+    {
+        point = point + pointUp;
+        cd = cd + cdUP;
+    }
 }
 function generate()
 {
@@ -16,20 +26,12 @@ function generate()
     if (debounce == false)
     {
     debounce = true;
-    if (upg1 == true)
-    {
-        point++;
-    }
-    if (upg2 == true)
-    {
-        cd = cd - 500;
-    }
-    if (upg3 == true)
-    {
-        point = point + 2;
-        cd = cd + 750;
-    }
-    point++;
+   UpgradeFunction(upg1,1,0);
+   UpgradeFunction(upg2,0,-500); 
+   UpgradeFunction(upg3,1,-250);
+   UpgradeFunction(upg4,2,250);
+   UpgradeFunction(upg5,-2,-500);
+    point = point + 1;
     Update()
     var cooldownValue = 0;
     document.getElementById("btn").textContent = "Wait: "+(cd/1000)+" Sec";
@@ -95,6 +97,26 @@ function buy(x, cost)
         {
         point = total;
         upg3 = true;
+        document.getElementById(x).textContent = msg;
+        Update()
+        }
+    }
+    else if (x == 4 && upg4 == false)
+    {
+        if ((total) >= 0)
+        {
+        point = total;
+        upg4 = true;
+        document.getElementById(x).textContent = msg;
+        Update()
+        }
+    }
+    else if (x == 5 && upg5 == false)
+    {
+        if ((total) >= 0)
+        {
+        point = total;
+        upg5 = true;
         document.getElementById(x).textContent = msg;
         Update()
         }
